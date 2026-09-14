@@ -1,5 +1,3 @@
-
-
 import java.util.*;
 
 public class Workshop {
@@ -21,9 +19,7 @@ public class Workshop {
     }
 
     public long factorial(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("El número no puede ser negativo");
-        }
+        if (n < 0) throw new IllegalArgumentException("Número negativo");
         long fact = 1;
         for (int i = 1; i <= n; i++) {
             fact *= i;
@@ -33,16 +29,14 @@ public class Workshop {
 
     public boolean esPrimo(int numero) {
         if (numero <= 1) return false;
-        for (int i = 2; i <= Math.sqrt(numero); i++) {
+        for (int i = 2; i * i <= numero; i++) {
             if (numero % i == 0) return false;
         }
         return true;
     }
 
     public int[] serieFibonacci(int n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("El número no puede ser negativo");
-        }
+        if (n < 0) throw new IllegalArgumentException("Número negativo");
         int[] fib = new int[n];
         if (n > 0) fib[0] = 0;
         if (n > 1) fib[1] = 1;
@@ -54,9 +48,7 @@ public class Workshop {
 
     public int sumaElementos(int[] arreglo) {
         int suma = 0;
-        for (int num : arreglo) {
-            suma += num;
-        }
+        for (int num : arreglo) suma += num;
         return suma;
     }
 
@@ -104,14 +96,10 @@ public class Workshop {
 
     public int[] eliminarDuplicados(int[] arreglo) {
         Set<Integer> set = new LinkedHashSet<>();
-        for (int num : arreglo) {
-            set.add(num);
-        }
+        for (int num : arreglo) set.add(num);
         int[] resultado = new int[set.size()];
         int i = 0;
-        for (int num : set) {
-            resultado[i++] = num;
-        }
+        for (int num : set) resultado[i++] = num;
         return resultado;
     }
 
@@ -127,7 +115,6 @@ public class Workshop {
         if (n == 0) return arreglo;
         posiciones = posiciones % n;
         if (posiciones < 0) posiciones += n;
-        
         int[] rotado = new int[n];
         for (int i = 0; i < n; i++) {
             rotado[i] = arreglo[(i + posiciones) % n];
@@ -146,14 +133,12 @@ public class Workshop {
     public boolean esPalindromo(String cadena) {
         if (cadena == null) return false;
         String limpia = cadena.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        String invertida = new StringBuilder(limpia).reverse().toString();
-        return limpia.equals(invertida);
+        return limpia.equals(new StringBuilder(limpia).reverse().toString());
     }
 
     public int contarPalabras(String cadena) {
         if (cadena == null || cadena.trim().isEmpty()) return 0;
-        String[] palabras = cadena.trim().split("\\s+");
-        return palabras.length;
+        return cadena.trim().split("\\s+").length;
     }
 
     public String convertirAMayusculas(String cadena) {
@@ -175,16 +160,13 @@ public class Workshop {
 
     public boolean validarCorreoElectronico(String correo) {
         if (correo == null) return false;
-        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,}$";
-        return correo.matches(regex);
+        return correo.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[a-zA-Z]{2,}$");
     }
 
     public double promedioLista(List<Integer> lista) {
         if (lista == null || lista.isEmpty()) return 0.0;
         double suma = 0;
-        for (int num : lista) {
-            suma += num;
-        }
+        for (int num : lista) suma += num;
         return suma / lista.size();
     }
 
@@ -197,46 +179,41 @@ public class Workshop {
     }
 
     public String jugarPiedraPapelTijeraLagartoSpock(String eleccion) {
-        eleccion = eleccion.toLowerCase();
+        if (eleccion == null) return "Elección inválida";
+        String p1 = eleccion.toLowerCase();
         List<String> opciones = Arrays.asList("piedra", "papel", "tijera", "lagarto", "spock");
-        if (!opciones.contains(eleccion)) return "Elección inválida";
-
+        if (!opciones.contains(p1)) return "Elección inválida";
         String pc = opciones.get(new Random().nextInt(opciones.size()));
-        if (eleccion.equals(pc)) return "Empate";
-
-        boolean gana = switch (eleccion) {
-            case "tijera" -> pc.equals("papel") || pc.equals("lagarto");
-            case "papel" -> pc.equals("piedra") || pc.equals("spock");
-            case "piedra" -> pc.equals("lagarto") || pc.equals("tijera");
-            case "lagarto" -> pc.equals("spock") || pc.equals("papel");
-            case "spock" -> pc.equals("tijera") || pc.equals("piedra");
-            default -> false;
-        };
-
-        return gana ? "Ganaste" : "Perdiste";
+        if (p1.equals(pc)) return "Empate";
+        
+        if ((p1.equals("tijera") && (pc.equals("papel") || pc.equals("lagarto"))) ||
+            (p1.equals("papel") && (pc.equals("piedra") || pc.equals("spock"))) ||
+            (p1.equals("piedra") && (pc.equals("lagarto") || pc.equals("tijera"))) ||
+            (p1.equals("lagarto") && (pc.equals("spock") || pc.equals("papel"))) ||
+            (p1.equals("spock") && (pc.equals("tijera") || pc.equals("piedra")))) {
+            return "Ganaste";
+        }
+        return "Perdiste";
     }
 
     public String pptls2(String[] game) {
         if (game == null || game.length < 2) return "Empate";
         String p1 = game[0].toLowerCase();
         String p2 = game[1].toLowerCase();
-
         if (p1.equals(p2)) return "Empate";
 
-        boolean p1Gana = switch (p1) {
-            case "tijera" -> p2.equals("papel") || p2.equals("lagarto");
-            case "papel" -> p2.equals("piedra") || p2.equals("spock");
-            case "piedra" -> p2.equals("lagarto") || p2.equals("tijera");
-            case "lagarto" -> p2.equals("spock") || p2.equals("papel");
-            case "spock" -> p2.equals("tijera") || p2.equals("piedra");
-            default -> false;
-        };
-
-        return p1Gana ? "Jugador 1" : "Jugador 2";
+        if ((p1.equals("tijera") && (p2.equals("papel") || p2.equals("lagarto"))) ||
+            (p1.equals("papel") && (p2.equals("piedra") || p2.equals("spock"))) ||
+            (p1.equals("piedra") && (p2.equals("lagarto") || p2.equals("tijera"))) ||
+            (p1.equals("lagarto") && (p2.equals("spock") || p2.equals("papel"))) ||
+            (p1.equals("spock") && (p2.equals("tijera") || p2.equals("piedra")))) {
+            return "Jugador 1";
+        }
+        return "Jugador 2";
     }
 
     public double areaCirculo(double radio) {
-        if (radio < 0) throw new IllegalArgumentException("El radio no puede ser negativo");
+        if (radio < 0) throw new IllegalArgumentException("Radio negativo");
         return Math.PI * radio * radio;
     }
 
@@ -259,4 +236,3 @@ public class Workshop {
         return "Fecha inválida";
     }
 }
-   
