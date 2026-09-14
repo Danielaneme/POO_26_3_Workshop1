@@ -1,5 +1,4 @@
-
-
+package com.github.sigmotoa;
 import java.util.*;
 
 public class Workshop {
