@@ -1,3 +1,3 @@
-public String convertirABinario(int numero) {
-    return Integer.toBinaryString(numero);
+public String convertirAHexadecimal(int numero) {
+    return Integer.toHexString(numero).toUpperCase();
 }
