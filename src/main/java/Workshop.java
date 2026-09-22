@@ -1,8 +1,8 @@
-public int sumaElementos(int[] arreglo) {
-    if (arreglo == null) return 0;
-    int suma = 0;
+public double promedioElementos(int[] arreglo) {
+    if (arreglo == null || arreglo.length == 0) return 0.0;
+    double suma = 0;
     for (int num : arreglo) {
         suma += num;
     }
-    return suma;
+    return suma / arreglo.length;
 }
