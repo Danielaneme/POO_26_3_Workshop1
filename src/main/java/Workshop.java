@@ -1,13 +1,8 @@
-public int[] eliminarDuplicados(int[] arreglo) {
-    if (arreglo == null) return new int[0];
-    java.util.Set<Integer> set = new java.util.LinkedHashSet<>();
-    for (int num : arreglo) {
-        set.add(num);
-    }
-    int[] resultado = new int[set.size()];
-    int index = 0;
-    for (int num : set) {
-        resultado[index++] = num;
-    }
-    return resultado;
+public int[] combinarArreglos(int[] arreglo1, int[] arreglo2) {
+    if (arreglo1 == null) arreglo1 = new int[0];
+    if (arreglo2 == null) arreglo2 = new int[0];
+    int[] combinado = new int[arreglo1.length + arreglo2.length];
+    System.arraycopy(arreglo1, 0, combinado, 0, arreglo1.length);
+    System.arraycopy(arreglo2, 0, combinado, arreglo1.length, arreglo2.length);
+    return combinado;
 }
