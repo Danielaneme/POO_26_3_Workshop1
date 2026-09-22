@@ -1,10 +1,7 @@
-public long factorial(int n) {
-    if (n < 0) {
-        throw new IllegalArgumentException("El número no puede ser negativo");
+public boolean esPrimo(int numero) {
+    if (numero <= 1) return false;
+    for (int i = 2; i <= Math.sqrt(numero); i++) {
+        if (numero % i == 0) return false;
     }
-    long fact = 1;
-    for (int i = 1; i <= n; i++) {
-        fact *= i;
-    }
-    return fact;
+    return true;
 }
