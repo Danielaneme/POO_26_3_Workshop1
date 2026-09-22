@@ -1,7 +1,10 @@
-public int[] tablaMultiplicar(int numero, int limite) {
-    int[] tabla = new int[limite];
-    for (int i = 0; i < limite; i++) {
-        tabla[i] = numero * (i + 1);
+public long factorial(int n) {
+    if (n < 0) {
+        throw new IllegalArgumentException("El número no puede ser negativo");
     }
-    return tabla;
+    long fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
 }
