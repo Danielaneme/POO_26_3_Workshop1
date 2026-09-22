@@ -1,8 +1,10 @@
-public double promedioElementos(int[] arreglo) {
-    if (arreglo == null || arreglo.length == 0) return 0.0;
-    double suma = 0;
-    for (int num : arreglo) {
-        suma += num;
+public int encontrarElementoMayor(int[] arreglo) {
+    if (arreglo == null || arreglo.length == 0) return 0;
+    int mayor = arreglo[0];
+    for (int i = 1; i < arreglo.length; i++) {
+        if (arreglo[i] > mayor) {
+            mayor = arreglo[i];
+        }
     }
-    return suma / arreglo.length;
+    return mayor;
 }
