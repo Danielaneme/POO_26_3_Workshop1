@@ -1,4 +1,4 @@
-public String convertirAMayusculas(String cadena) {
+public String convertirAMinusculas(String cadena) {
     if (cadena == null) return "";
-    return cadena.toUpperCase();
+    return cadena.toLowerCase();
 }
