@@ -1,4 +1,4 @@
-public String convertirAMinusculas(String cadena) {
-    if (cadena == null) return "";
-    return cadena.toLowerCase();
+public String reemplazarSubcadena(String cadena, String vieja, String nueva) {
+    if (cadena == null || vieja == null || nueva == null) return "";
+    return cadena.replace(vieja, nueva);
 }
