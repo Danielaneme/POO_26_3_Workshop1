@@ -1,4 +1,4 @@
-public String reemplazarSubcadena(String cadena, String vieja, String nueva) {
-    if (cadena == null || vieja == null || nueva == null) return "";
-    return cadena.replace(vieja, nueva);
+public int buscarSubcadena(String cadena, String subcadena) {
+    if (cadena == null || subcadena == null) return -1;
+    return cadena.indexOf(subcadena);
 }
