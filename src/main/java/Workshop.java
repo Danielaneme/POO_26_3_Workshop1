@@ -1,8 +1,11 @@
-public int[] combinarArreglos(int[] arreglo1, int[] arreglo2) {
-    if (arreglo1 == null) arreglo1 = new int[0];
-    if (arreglo2 == null) arreglo2 = new int[0];
-    int[] combinado = new int[arreglo1.length + arreglo2.length];
-    System.arraycopy(arreglo1, 0, combinado, 0, arreglo1.length);
-    System.arraycopy(arreglo2, 0, combinado, arreglo1.length, arreglo2.length);
-    return combinado;
+public int[] rotarArreglo(int[] arreglo, int posiciones) {
+    if (arreglo == null || arreglo.length == 0) return new int[0];
+    int n = arreglo.length;
+    posiciones = posiciones % n;
+    if (posiciones < 0) posiciones += n;
+    int[] rotado = new int[n];
+    for (int i = 0; i < n; i++) {
+        rotado[i] = arreglo[(i + posiciones) % n];
+    }
+    return rotado;
 }
